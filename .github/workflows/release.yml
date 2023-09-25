@@ -63,3 +63,4 @@ jobs:
           releaseBody: 'See the assets to download and install this version.'
           releaseDraft: true
           prerelease: false
+          updaterJsonKeepUniversal: true
