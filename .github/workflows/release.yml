@@ -12,7 +12,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-20.04, windows-latest]
+        platform: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+          - platform: macos-latest
+            buildTarget: universal-apple-darwin
+          - platform: windows-latest
+            buildTarget: x86_64-pc-windows-msvc
     runs-on: ${{ matrix.platform }}
 
     steps:
@@ -64,3 +69,4 @@ jobs:
           releaseDraft: true
           prerelease: false
           updaterJsonKeepUniversal: true
+          args: --target ${{ matrix.buildTarget }}
